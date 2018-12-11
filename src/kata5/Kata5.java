@@ -4,14 +4,26 @@
  * and open the template in the editor.
  */
 package kata5;
+import java.io.IOException;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.sql.Statement;
+
+
+import java.util.List;
+
+
 public class Kata5 {
     
-    public static void main(String[] args) { 
+    public static void main(String[] args) throws IOException{
+        String directory = "email.txt";
+        List<String> lista = new MailListReader().read(directory);
+        
         createNewTable();
+        
+        InsertarDatosEnTabla idt = new InsertarDatosEnTabla();
+        idt.insert(lista); createNewTable();
     }
     
     public static void createNewTable() {
